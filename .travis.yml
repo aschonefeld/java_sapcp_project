@@ -1,24 +1,15 @@
 language: java
-
 env:
   global:
   - CXX=g++-4.8
   - CF_APP=scpcitestapp
+  - secure: iK1rkvMcjIQTRCEQR/IWpW14XBf9WnHpy7eFvxi/xuDnAwIQG9MDA7hIWUa1cP02mPNpWFSYlYhcp+DQ0zIZux8Vkbfr0GvFq/RHT7kvBKAjujmF616Tvio+DcVZdF8D31exUaGyGgEgu7iPO6Lv1iLD/0HxXJzAJQ66Frd/BH+Z5TAe1h7Emyzpc1kCHWXmMFOEa2QwmEAcyG5wdwf4OgGtZxw1BpISN2msFUmxO43Ks8SmW6zha7230JYYLBL4zO7fVDgC6uYDhJlAM/rRuspTba5Ox7O2gyLN4taevd1nDv1YlxKwoO7BAmcXXYI2scZ6v7GF++6VsMv6JPjpKGX/k2Vd8W9NvOlvnBBmcc5f1hBode1OlXQXEGj/HBPC0C47ppHXimxzWD9Mqq2kHMrl1GAqhdBtahSEEGKblrHKYMcEKH1ZY/Ag6k7SCQR/Ad+msI7aM6Bk9g+QYfEl8zkVzwRDkOJy4xmLtMfq2RgVhf6p3SOTMk+1UlqrQyFBEdt987Mjp19joGIBc6msfcoWQeH3KJVRuymsHtOnx6iHzFa2KApFjkAziwtFCtxk5rz9j3wwbEXZ1YdKq4LCqyAhK+YqBqk0QpKI4PfwYqlg9VjxG3aMJA5s1StA+LAjSuc4FtrmrSaKesKle1PmvO8xQX8qVhdayFzLHrgn8YE=
 script:
 - sudo mkdir /mvnbuild
-- mvn -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -P cloud-integration-tests clean install -Denv.CF_API=$CF_API -Denv.CF_QA_ORGANIZATION=$CF_QA_ORGANIZATION -Denv.CF_QA_SPACE=$CF_QA_SPACE -Denv.CF_USERNAME=$CF_USERNAME -Denv.CF_PASSWORD=$CF_PASSWORD
-
-- 'if [ $TRAVIS_TEST_RESULT -eq 0 ]; then
- chmod +x ./cf_blue_green_travis.sh;
- sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test;
- sudo apt-get -qq update;
- sudo apt-get -qq install g++-4.8;
- sudo ./cf_blue_green_travis.sh;
-fi'
-
+- mvn -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -P
+  cloud-integration-tests clean install -Denv.CF_API=$CF_API -Denv.CF_QA_ORGANIZATION=$CF_QA_ORGANIZATION
+  -Denv.CF_QA_SPACE=$CF_QA_SPACE -Denv.CF_USERNAME=$CF_USERNAME -Denv.CF_PASSWORD=$CF_PASSWORD
+- if [ $TRAVIS_TEST_RESULT -eq 0 ]; then chmod +x ./cf_blue_green_travis.sh; sudo
+  add-apt-repository -y ppa:ubuntu-toolchain-r/test; sudo apt-get -qq update; sudo
+  apt-get -qq install g++-4.8; sudo ./cf_blue_green_travis.sh; fi
 sudo: required
-#NEO Java Maven commands
-#script:
-#- mvn clean install -P cloud-integration-tests -Denv.SAP_CLOUD_HOST=$SAP_CLOUD_HOST -Denv.SAP_CLOUD_ACCOUNT=$SAP_CLOUD_ACCOUNT -Denv.SAP_CLOUD_USERNAME=$SAP_CLOUD_USERNAME -Denv.SAP_CLOUD_PASSWORD=$SAP_CLOUD_PASSWORD
-#after_success:
-#- mvn clean install -P update -Denv.SAP_CLOUD_HOST=$SAP_CLOUD_PROD_HOST -Denv.SAP_CLOUD_ACCOUNT=$SAP_CLOUD_PROD_ACCOUNT -Denv.SAP_CLOUD_USERNAME=$SAP_CLOUD_PROD_USERNAME -Denv.SAP_CLOUD_PASSWORD=$SAP_CLOUD_PROD_PASSWORD
