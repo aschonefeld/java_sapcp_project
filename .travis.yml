@@ -1,0 +1,24 @@
+language: java
+
+env:
+  global:
+  - CXX=g++-4.8
+  - CF_APP=scpcitestapp
+script:
+- sudo mkdir /mvnbuild
+- mvn -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -P cloud-integration-tests clean install -Denv.CF_API=$CF_API -Denv.CF_QA_ORGANIZATION=$CF_QA_ORGANIZATION -Denv.CF_QA_SPACE=$CF_QA_SPACE -Denv.CF_USERNAME=$CF_USERNAME -Denv.CF_PASSWORD=$CF_PASSWORD
+
+- 'if [ $TRAVIS_TEST_RESULT -eq 0 ]; then
+ chmod +x ./cf_blue_green_travis.sh;
+ sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test;
+ sudo apt-get -qq update;
+ sudo apt-get -qq install g++-4.8;
+ sudo ./cf_blue_green_travis.sh;
+fi'
+
+sudo: required
+#NEO Java Maven commands
+#script:
+#- mvn clean install -P cloud-integration-tests -Denv.SAP_CLOUD_HOST=$SAP_CLOUD_HOST -Denv.SAP_CLOUD_ACCOUNT=$SAP_CLOUD_ACCOUNT -Denv.SAP_CLOUD_USERNAME=$SAP_CLOUD_USERNAME -Denv.SAP_CLOUD_PASSWORD=$SAP_CLOUD_PASSWORD
+#after_success:
+#- mvn clean install -P update -Denv.SAP_CLOUD_HOST=$SAP_CLOUD_PROD_HOST -Denv.SAP_CLOUD_ACCOUNT=$SAP_CLOUD_PROD_ACCOUNT -Denv.SAP_CLOUD_USERNAME=$SAP_CLOUD_PROD_USERNAME -Denv.SAP_CLOUD_PASSWORD=$SAP_CLOUD_PROD_PASSWORD

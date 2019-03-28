@@ -1,0 +1,7 @@
+---
+applications:
+- name: scpcitestapp
+  host: scpcitestapp
+  memory: 1G
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  path: hello-world/target/scpcitestapp.war
