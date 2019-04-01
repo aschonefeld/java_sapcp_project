@@ -345,7 +345,7 @@
                 <username>${sap.cloud.username}</username>
                 <password>${sap.cloud.password}</password>
                 <space>${sap.cloud.space}</space>
-                <org>${sap.cloud.org}qa</org>
+                <org>${sap.cloud.org}</org>
                 <appname>scpcitestapp-qa</appname>
                 <memory>640</memory>
                 <diskQuota>512</diskQuota>
