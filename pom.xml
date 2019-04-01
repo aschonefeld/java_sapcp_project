@@ -351,13 +351,13 @@
                 <diskQuota>1024</diskQuota>
                 </configuration>
                 <executions>
-                <execution>
-                    <id>deploying-application</id>
-                    <phase>package</phase>
-                    <goals>
-                    <goal>push</goal>
-                    </goals>
-                </execution>
+                    <execution>
+                        <id>deploying-application</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
                 </executions>
             </plugin>
             </plugins>

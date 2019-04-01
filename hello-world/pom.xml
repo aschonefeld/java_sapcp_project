@@ -13,8 +13,8 @@
             <artifactId>maven-war-plugin</artifactId>
             <version>3.0.0</version>
             <configuration>
-            <warSourceDirectory>WebContent</warSourceDirectory>
-            <outputDirectory>/tmp</outputDirectory>
+                <warSourceDirectory>WebContent</warSourceDirectory>
+                <outputDirectory>/tmp</outputDirectory>
             </configuration>
         </plugin>
         </plugins>
