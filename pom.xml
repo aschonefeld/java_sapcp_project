@@ -347,8 +347,8 @@
                 <space>${sap.cloud.space}</space>
                 <org>${sap.cloud.org}</org>
                 <appname>scpcitestapp-qa</appname>
-                <memory>640</memory>
-                <diskQuota>512</diskQuota>
+                <memory>1024</memory>
+                <diskQuota>1024</diskQuota>
                 </configuration>
                 <executions>
                 <execution>
