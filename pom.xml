@@ -129,15 +129,7 @@
     </dependencies>
 
     <modules>
-        <module>authentication</module>
-        <module>connectivity</module>
-        <module>document-store</module>
-        <module>explore-ui5</module>
-        <module>hello-world</module>
-        <module>mail</module>
-        <module>persistence-with-jdbc</module>
-        <module>persistence-with-jpa</module>
-        <module>websocket</module>
+        <module>scpcitestapp</module>
     </modules>
 
     <build>
