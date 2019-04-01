@@ -1,10 +1,12 @@
 language: java
 env:
   global:
-  - matrix:
-    - CXX=g++-4.8
-    - CF_APP=scpcitestapp
-  - secure: P5qCyd5tw9UFFC+UQETwQSmgirPDFaHcZvNGhktfR3BR4ujlIYRcCsO8eCfwZ38USlJO4ll2vftLOTvxXWxZBK/1lJS7u6x+YxNdbwZbsVuSkQrdxPmVC0+2T4liIhg0kRVvHNO1SUB+qzEVjV2EZ1C67jl99yQsh6WMR41IHTh09BOTCMUU1W27PKiHcPKr8A+VdLJ/U8O+momuxdSwXE12vtWQFptUtbtXFI4t3ZAh5Ucn2EuxLwWfKR3QnlAsweXZ6bfWPYpEGKL7mQr44lcLn6GDxFt2O7ioFMKjessSuWGnkoHbwAPQDMBE9z7mAZ1inUmJ0ojukHBZHnMgYVceVVkS7v+fVM+GSXG8G7rtYBdPRT1SHGYeSDNkpbjaFA/04dvw7OB1haS0BCL0p1eCzTKSVXC9DSOOI9OpElqY7C+tEYeAde62VFnBBOocARsvy6mxY6dP6yWasf3Gw6OyUd/qvMbwOANbfqPiwppLum1Ok4+3Kt/CgWPbIPPCm9nzJqBzLaguEyLUpzPWN+pBxnvoA052n1YZwfzWAF30oMbuUMvKF7gHhrW46mFqAP2ckYE5zaTWTrOgxR2EoipNmq0mL6S19mEV+/Yj+Xnz/zqmt/fCyvZlTbD47N7bcQakoVIwbIMkov6nnVmNRstD5oPWb7wAtb19CuiI7UM=
+    matrix:
+    - matrix:
+      - CXX=g++-4.8
+      - CF_APP=scpcitestapp
+    CF_PASSWORD:
+      secure: EGVjNrlRS4p2ThyDjkQpmNXHf35hfAaDjivVk+IJS15uOulEE5UUU/QuI53slK5noaeCIPidPIPhqtvkcWKtsrsJrTJJg4aUWXdVJ62kXnv/6gyzH+yUteQcjA30Qyen+ZMQ4d4+ZbPZmlXCK1hVXFlpEaZrm6KQEEJs6R3Frni74mYR1NL7JZSik1uUb3b3NtALXoDEnA7RTWKaeD9EvN+jWGf9q6YPe9rHOycsrnoYqFPstw3wMaAngRHPicME9W9lli2Q7hVM6fJIpYFJT6WyTWmo9y93lnHBj0LBfFHgmwvjLq7ctxqzsq1KKvVgpESvHqzWODex8tSg4yEZUgk7aP9aCoOl+OF9XZrchvhN9ugxaXXj/vu2oZpujZZa/nS17DFEZ5Z3gkxkoZkoumQ9LZ/6M+AeCRqDOh6iZ78D5CTKNAIU2AZT/HL0J5lbKJ5f08LwFyWJljr14Iy7iaSwbpnzDISnoTyDpnIirX5Ic2oTCJb7lLNj1WOaoX18bxJD1PX0Cfttb2j7bhiYT84bf6kqJ4L8yLWXGvO9HXMEFBLbov8Cn3Vi8cTJ9BE9FqrrhAkNAY+n8Taem0G91CjiYh/uncPuYoOnYqDWQQ5zFIdomIdn4Z+60LGqOfHxAxp2Y0nr3oe4czHDQjdjH4cHfljpb46gbP8CcsBu5hY=
 script:
 - sudo mkdir /mvnbuild
 - mvn -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -P
