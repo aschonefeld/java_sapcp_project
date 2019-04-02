@@ -4,11 +4,11 @@ env:
   - CXX=g++-4.8
   - CF_APP=scpcitestapp
   - CF_DOMAIN=cfapps.eu10.hana.ondemand.com
-#  - CF_API=$CF_API
+  - CF_API=https://api.cf.eu10.hana.ondemand.com
   - CF_PROD_ORGANIZATION=S0018628687trial_S0018628687trialnew
-#  - CF_PROD_SPACE
+  - CF_PROD_SPACE=prod
   - CF_QA_ORGANIZATION=S0018628687trial_S0018628687trialnew
-#  - CF_QA_SPACE
+  - CF_QA_SPACE=qa
 #  - CF_USERNAME
   - secure: FC8xTCP3NY+/apuPRU8cUA6nFGFFojbqPl0K8QyVEvPiFfgcazhtS56cXUs/ldys2gZfCv7ErRUwD52nq7L3D4oqZHboa78i3wG8PFVxmDdFH5P1pJMcCPDctiYx+8XUpXR5mdsHT3aWxvRM8pDoLg8d2bF0p1rLdJShhQSnV6RPuYq+YAe+HuoUOKc/AfsN8KdebjlhjcVhUIuS/xDFxQJVghuxhCppF6e987oEI1AdGMyaNmTS16nSBoEsuf6sUgN3YOEZQW6tAckpew7/Jvx6TRXDjoC+KIGbvJGckViaNXlLm2gjAMwHfd5IRorTS9cYf9Nuc8GM4uQBqLj+l4wtR45n4puPAvczD5GxX987nNd1mlCrbflteTyt68RUzIjvuH+aG8DjKdxPXxH8qoUcq6b9CQJ5wlCiMkZF7NLQqlbOxA+p8fRpYe9FlhTpjfFNvve9j8/MprbBYFwUEYS3JjuvomKFSKMbPAFgiIUhmqBUZreQJQdbbzpjVbIfHwq8s9o5qL2Wo15KQYbk1bXGMJn+64zv/qHOUTZzHQx+F/AGyM4WPTrv9RIfIYNCK8YaGmjzc6wTY4zP3wgrWbzgo5RRbjgD/98AQcenFhrQY3ceY9ionbu4KDcqc3mmpcoeujaHceHB6u17rDZF+aSVsLZntxKmpZdh2bYj49w=
 script:
