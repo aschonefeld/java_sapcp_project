@@ -37,7 +37,7 @@ sudo apt-get install cf-cli
 
 # Login to Cloud Foundry
 cf api $CF_API #Use the cf api command to set the api endpoint
-cf login -u $CF_USERNAME -p $CF_PASSWORD -o $CF_PROD_ORGANIZATION -s $CF_PROD_SPACE
+cf login -u $CF_USERNAME -p $CF_PASSWORD -o $CF_QA_ORGANIZATION -s $CF_QA_SPACE
 
 # Get the script path to execute the script
 pushd `dirname $0` > /dev/null
@@ -51,13 +51,13 @@ popd > /dev/null
 CURRENTPATH=$(pwd)
 
 # Set the application name in BLUE variable
-BLUE="${CF_APP}-testdomain-prod-qsc"
+BLUE=$CF_APP
 
 # Green variable will store a temporary name for the application
 GREEN="${BLUE}-B"
 
 # Set the Domain to the Stage
-DOMAIN="${CF_DOMAIN}.prod.qsc"
+DOMAIN="${CF_DOMAIN}"
 
 # Pull the up-to-date manifest from the BLUE (existing) application
 MANIFEST=$(mktemp -t "${BLUE}_manifestXXXXXXX.temp")
@@ -85,7 +85,6 @@ sed -i -e "s?path: ?path: $CURRENTPATH/?g" $MANIFEST
 trap on_fail ERR
 
 # Prepare the URL of the green application
-DOMAIN=$CF_DOMAIN
 cf push -f $MANIFEST -p /tmp/$CF_APP.war
 GREENURL=https://${GREEN}.${DOMAIN}
 
