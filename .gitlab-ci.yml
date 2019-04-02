@@ -1,4 +1,5 @@
-image: java:8
+#image: java:8
+image: maven:latest
 
 variables:
   CF_APP: "scpcitestapp"
@@ -17,9 +18,7 @@ stages:
 build:
   stage: build
   script: 
-    - pwd
-    - ls -al
-    - ./mvn install
+    - mvn install
   artifacts:
     paths:
       - tmp/scpcitestapp.war
