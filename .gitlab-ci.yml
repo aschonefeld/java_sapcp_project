@@ -16,7 +16,10 @@ stages:
 
 build:
   stage: build
-  script: /build/build.sh
+  script: 
+    - pwd
+    - ls -al
+    - ./mvn install
   artifacts:
     paths:
       - tmp/scpcitestapp.war
