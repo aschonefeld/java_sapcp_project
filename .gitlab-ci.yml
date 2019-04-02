@@ -1,0 +1,50 @@
+image: java:8
+
+variables:
+  CF_APP: "scpcitestapp"
+  CF_DOMAIN: "cfapps.eu10.hana.ondemand.com"
+  CF_API: "https://api.cf.eu10.hana.ondemand.com"
+  CF_PROD_ORGANIZATION: "S0018628687trial_S0018628687trialnew"
+  CF_PROD_SPACE: "prod"
+  CF_QA_ORGANIZATION: "S0018628687trial_S0018628687trialnew"
+  CF_QA_SPACE: "qa"
+
+stages:
+  - build
+  - staging
+  - deploy
+
+build:
+  stage: build
+  script: mvn install
+  artifacts:
+    paths:
+      - tmp/scpcitestapp.war
+
+test:
+  stage: staging
+  script: 
+  #- curl --location "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" | tar zx
+  #- ./cf login -u $CF_USERNAME -p $CF_PASSWORD -a api.run.pivotal.io
+  #- ./cf push
+  - chmod +x ./cf_qa_deploy_travis.sh
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get -qq update
+  - sudo apt-get -qq install g++-4.8
+  - sudo ./cf_qa_deploy_travis.sh
+  only:
+  - master
+
+production:
+  stage: deploy
+  script:
+  #- curl --location "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" | tar zx
+  #- ./cf login -u $CF_USERNAME -p $CF_PASSWORD -a api.run.pivotal.io
+  #- ./cf push
+  - chmod +x ./cf_blue_green_travis.sh
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get -qq update
+  - sudo apt-get -qq install g++-4.8
+  - sudo ./cf_blue_green_travis.sh
+  only:
+  - master
