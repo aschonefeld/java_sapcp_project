@@ -24,7 +24,7 @@
         <sap.cloud.sdk.plugin>neo-java-web-maven-plugin</sap.cloud.sdk.plugin>
 
         <!-- Property that holds the supported JDK version for the given SAP Cloud Platform SDK for Neo environment -->
-        <sap.cloud.jdk.version>1.7</sap.cloud.jdk.version>
+        <sap.cloud.jdk.version>1.8</sap.cloud.jdk.version>
 
         <!-- Properties for account, user name, and password that are required to access the SAP Cloud Platform -->
         <!-- data center for the cloud integration tests must be provided as Maven properties, e.g.: -->
