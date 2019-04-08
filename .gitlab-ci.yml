@@ -17,11 +17,12 @@ stages:
 
 build:
   stage: build
-  script: 
+  script:
+    - mkdir tmp 
     - mvn install
   artifacts:
     paths:
-      - /tmp/scpcitestapp.war
+      - tmp/scpcitestapp.war
 
 test:
   stage: staging
@@ -31,7 +32,7 @@ test:
   - ./cf api $CF_API 
   # Use the cf api command to set the api endpoint
   - ./cf login -u $CF_USERNAME -p $CF_PASSWORD -o $CF_QA_ORGANIZATION -s $CF_QA_SPACE
-  - ./cf push -p /tmp/$CF_APP.war
+  - ./cf push -p tmp/$CF_APP.war
   only:
   - master
 
