@@ -26,18 +26,18 @@ function on_fail () {
 
 # Install cf for Travis 
 # Exit immediately in case of non-zero status return
-# Set -e
+Set -e
 
-# # Get the cloud foundry public key and add the repository
-# wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
-# echo "deb http://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
+# Get the cloud foundry public key and add the repository
+wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
+echo "deb http://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
 
-# # Update the local package index, then install the cf CLI
-# sudo apt-get update
-# sudo apt-get install cf-cli
+# Update the local package index, then install the cf CLI
+sudo apt-get update
+sudo apt-get install cf-cli
 
 # Install cf for Gitlab
-curl --location "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" | tar zx
+#curl --location "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" | tar zx
 
 # Login to Cloud Foundry
 cf api $CF_API #Use the cf api command to set the api endpoint

@@ -24,28 +24,26 @@ build:
       - /tmp/scpcitestapp.war
 
 test:
-  image: ubuntu:latest
   stage: staging
-  script: 
-  #- curl --location "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" | tar zx
-  #- ./cf login -u $CF_USERNAME -p $CF_PASSWORD -a api.run.pivotal.io
-  #- ./cf push
-  - chmod +x ./cf_qa_deploy_travis.sh
-  - ./cf_qa_deploy_travis.sh
+  script:
+  - curl --location "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" | tar zx
+  # Login to Cloud Foundry
+  - cf api $CF_API 
+  # Use the cf api command to set the api endpoint
+  - cf login -u $CF_USERNAME -p $CF_PASSWORD -o $CF_QA_ORGANIZATION -s $CF_QA_SPACE
+  - cf push -p /tmp/$CF_APP.war
   only:
   - master
 
 production:
   stage: deploy
   script:
-  #- curl --location "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" | tar zx
-  #- ./cf login -u $CF_USERNAME -p $CF_PASSWORD -a api.run.pivotal.io
-  #- ./cf push
-  - chmod +x ./cf_blue_green_travis.sh
-  #- sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-  #- sudo apt-get -qq update
-  #- sudo apt-get -qq install g++-4.8
-  - ./cf_blue_green_travis.sh
+  - curl --location "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" | tar zx
+  # Login to Cloud Foundry
+  - cf api $CF_API 
+  # Use the cf api command to set the api endpoint
+  - cf login -u $CF_USERNAME -p $CF_PASSWORD -o $CF_PROD_ORGANIZATION -s $CF_PROD_SPACE
+  - cf push -p /tmp/$CF_APP.war
   only:
   - master
   when: manual
