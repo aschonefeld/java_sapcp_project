@@ -24,6 +24,7 @@ build:
       - /tmp/scpcitestapp.war
 
 test:
+  image: ubuntu:latest
   stage: staging
   script: 
   #- curl --location "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" | tar zx
