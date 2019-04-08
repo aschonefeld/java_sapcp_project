@@ -21,7 +21,7 @@ build:
     - mvn install
   artifacts:
     paths:
-      - tmp/scpcitestapp.war
+      - /tmp/scpcitestapp.war
 
 test:
   stage: staging
