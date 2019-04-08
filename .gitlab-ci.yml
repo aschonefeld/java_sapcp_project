@@ -1,5 +1,5 @@
 #image: java:8
-image: maven:latest
+image: maven:3-jdk-8
 
 variables:
   CF_APP: "scpcitestapp"
