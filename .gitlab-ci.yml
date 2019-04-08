@@ -30,9 +30,7 @@ test:
   #- ./cf login -u $CF_USERNAME -p $CF_PASSWORD -a api.run.pivotal.io
   #- ./cf push
   - chmod +x ./cf_qa_deploy_travis.sh
-  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-  - sudo apt-get -qq update
-  - sudo ./cf_qa_deploy_travis.sh
+  - ./cf_qa_deploy_travis.sh
   only:
   - master
 
@@ -43,10 +41,10 @@ production:
   #- ./cf login -u $CF_USERNAME -p $CF_PASSWORD -a api.run.pivotal.io
   #- ./cf push
   - chmod +x ./cf_blue_green_travis.sh
-  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-  - sudo apt-get -qq update
+  #- sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  #- sudo apt-get -qq update
   #- sudo apt-get -qq install g++-4.8
-  - sudo ./cf_blue_green_travis.sh
+  - ./cf_blue_green_travis.sh
   only:
   - master
   when: manual
